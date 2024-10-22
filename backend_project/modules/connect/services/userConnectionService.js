@@ -1,6 +1,14 @@
-class UserConnectionService extends BaseConnectionService {
-    sendConnection(senderId, receiverId) {
-        // Specific logic for friend connections
-        return ConnectionRepository.createConnection(senderId, receiverId, { type: 'friend' });
+// modules/connect/services/userConnectService.js
+
+const BaseConnectService = require('./BaseConnectService');
+const User = require('../../users/models/User');
+
+class UserConnectService extends BaseConnectService {
+    constructor() {
+        super(User);
     }
+
+    // Additional user-specific methods if required
 }
+
+module.exports = new UserConnectService();

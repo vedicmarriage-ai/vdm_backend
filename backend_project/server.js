@@ -1,4 +1,7 @@
 // Server Setup
+
+//Keep server.js for Server Setup: Use it mainly to handle environment configuration, middleware that applies globally, and starting the server.
+
 const express = require('express');
 const connectDB = require('./config/db');
 const cors = require('cors');
@@ -20,11 +23,6 @@ app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/matches', require('./routes/matchRoutes'));
 app.use('/api/subscriptions', require('./routes/subscriptionRoutes'));
 app.use('/api/admin', require('./routes/adminRoutes'));
-
-// app.use('/api/recommendations', require('./routes/recommendationRoutes'));
-const recommendationRoutes = require('./modules/recommend/routes/recommendationRoutes');
-app.use('/api/recommendations', recommendationRoutes);
-
 app.use('/api/roles', require('./routes/roleRoutes'));
 app.use('/api/modules', require('./routes/moduleRoutes'));
 app.use('/api/otp', require('./routes/otpRoutes'));

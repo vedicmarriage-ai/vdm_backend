@@ -11,39 +11,36 @@ const connectionRequestSchema = new mongoose.Schema({
 })
 
 
-// Define the schema for recommendations
-const recommendationSchema = new mongoose.Schema({
-    userId: {                                  //store the ID of the user for whom recommendations are being made.
-        type: mongoose.Schema.Types.ObjectId, // Reference to the User model,Specifies that this field should contain an ObjectId.
-        ref: 'User',                           // Indicates that this is a reference to a User model
-        required: true                         // This field is mandatory
-    },
-    matchmakerId: {                            //Makes this field mandator
-        type: mongoose.Schema.Types.ObjectId, // Reference to the User model for the matchmaker
-        ref: 'User',                           // Indicates that this is a reference to a User
-        required: true                         // This field is mandatory
-    },
-    recommendedUserIds: [{                     //hold the IDs of users recommended to the userId.
-        type: mongoose.Schema.Types.ObjectId, // Array of references to recommended users
-        ref: 'User'                           // Indicates that these are references to the User model
-    }],
-    status: {                                 // field stores the status of the recommendation 
-        type: String,                         // Field to store the status of the recommendation
-        enum: ['pending', 'accepted', 'declined'], // Allowed values for the status
-        default: 'pending'                    // Default value for the status is 'pending'
-    },
-    createdAt: {                               // stores the date and time when the recommendation was created  
-        type: Date,                           // Field to store the creation date of the recommendation
-        default: Date.now                     // Default value is the current date and time
-    },
-    updatedAt: {                              // this field tracks when the recommendation was last updated
-        type: Date,                           // Field to store the last updated date of the recommendation
-        default: Date.now                     // Default value is the current date and time
-    },
-});
-
-// Export the recommendation schema for use in the User model
-module.exports = recommendationSchema;
+// // Define the schema for recommendations
+// const recommendationSchema = new mongoose.Schema({
+//     userId: {                                  //store the ID of the user for whom recommendations are being made.
+//         type: mongoose.Schema.Types.ObjectId, // Reference to the User model,Specifies that this field should contain an ObjectId.
+//         ref: 'User',                           // Indicates that this is a reference to a User model
+//         required: true                         // This field is mandatory
+//     },
+//     matchmakerId: {                            //Makes this field mandator
+//         type: mongoose.Schema.Types.ObjectId, // Reference to the User model for the matchmaker
+//         ref: 'User',                           // Indicates that this is a reference to a User
+//         required: true                         // This field is mandatory
+//     },
+//     recommendedUserIds: [{                     //hold the IDs of users recommended to the userId.
+//         type: mongoose.Schema.Types.ObjectId, // Array of references to recommended users
+//         ref: 'User'                           // Indicates that these are references to the User model
+//     }],
+//     status: {                                 // field stores the status of the recommendation 
+//         type: String,                         // Field to store the status of the recommendation
+//         enum: ['pending', 'accepted', 'declined'], // Allowed values for the status
+//         default: 'pending'                    // Default value for the status is 'pending'
+//     },
+//     createdAt: {                               // stores the date and time when the recommendation was created  
+//         type: Date,                           // Field to store the creation date of the recommendation
+//         default: Date.now                     // Default value is the current date and time
+//     },
+//     updatedAt: {                              // this field tracks when the recommendation was last updated
+//         type: Date,                           // Field to store the last updated date of the recommendation
+//         default: Date.now                     // Default value is the current date and time
+//     },
+// });
 
 
 
@@ -68,7 +65,7 @@ const UserSchema = new mongoose.Schema({
         createdAt: { type: Date, default: Date.now },
         updatedAt: { type: Date, default: Date.now },
     }],
-    
+
     subscription: {
         subscriptionId: { type: mongoose.Schema.Types.ObjectId, ref: 'Subscription' }, // Reference to the subscription plan
         paymentInfo: {

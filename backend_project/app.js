@@ -9,6 +9,12 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
+
+const recommendationRoutes = require('./modules/recommend/routes/recommendationRoutes'); // Import reccomend  routes
+const connectRoutes = require('./modules/connect/routes/connectRoutes'); // Import connect routes
+
+
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -25,15 +31,12 @@ app.use('/api/auth', require('./routes/authRoutes'));
 
 
 
-
-
-const recommendationRoutes = require('./modules/recommend/routes/recommendationRoutes');
-
+// Integrate recommendation routes
 app.use('/api/recommend', recommendationRoutes);
 
-// Connect to MongoDB and start the server...
+// Integrate connect routes
+app.use('/api/connect', connectRoutes); // Mount connect routes under /api/connect
 
+// Other global middleware...
 
-
-
-module.exports = app;
+// Database connection and server start logic...

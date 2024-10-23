@@ -15,4 +15,13 @@ router.post('/gallery/verify', verificationController.verifyGalleryPhoto);
 // Route to generate OTP
 router.post('/otp/generate', verificationController.generateOTP);
 
+// Route to send OTP to phone
+router.post('/otp/phone', verificationController.sendPhoneOtp);
+
+// Route to send OTP to email
+router.post('/otp/email', verificationController.sendEmailOtp);
+
+// Route to verify OTP
+router.post('/otp/verify', verificationController.verifyOtp);
+
 module.exports = router;

@@ -12,6 +12,30 @@ exports.verifyOTPAndUpdatePassword = async (req, res) => {
   }
 };
 
+// Send OTP to phone
+exports.sendPhoneOtp = async (req, res) => {
+  const { userId, phoneNumber } = req.body;
+  
+  try {
+    const result = await VerificationService.sendPhoneOtp(userId, phoneNumber);
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
+};
+
+// Send OTP to email
+exports.sendEmailOtp = async (req, res) => {
+  const { userId, email } = req.body;
+  
+  try {
+    const result = await VerificationService.sendEmailOtp(userId, email);
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
+};
+
 // Verify Selfie
 exports.verifySelfie = async (req, res) => {
   const { userId, capturedImageUrl } = req.body;
@@ -45,4 +69,15 @@ exports.generateOTP = async (req, res) => {
   } catch (error) {
     return res.status(400).json({ message: error.message });
   }
+};
+
+// Verify OTP
+exports.verifyOtp = async (req, res) => {
+  const { userId, otpCode } = req.body;
+  
+  try {
+    const result = await VerificationService.verifyOtp(userId, otpCode);
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
 };

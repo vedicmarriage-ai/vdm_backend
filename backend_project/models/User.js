@@ -47,8 +47,23 @@ const connectionRequestSchema = new mongoose.Schema({
 const UserSchema = new mongoose.Schema({
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
 
+    password: { type: String, required: true }, // User's password
+
+    verification: {
+        gallery: [{ 
+            photoId: { type: mongoose.Schema.Types.ObjectId, ref: 'GalleryPhoto', default: null }, // Reference to the verified gallery photo
+            url: { type: String, default: null }, // URL for the verified user-uploaded photo
+            uploadedAt: { type: Date, default: Date.now } // Date the photo was uploaded
+        }],
+        verifiedPhotos: { 
+            selfie: { type: String, default: null }, // URL of the verified selfie
+            govtId: { 
+                front: { type: String, default: null }, // URL of the verified front image of the government ID
+                back: { type: String, default: null }    // URL of the verified back image of the government ID
+            }
+        }
+    },
     connections: {
         sentRequests: [connectionRequestSchema], // Requests initiated by the user
         receivedRequests: [connectionRequestSchema], // Requests received by the user

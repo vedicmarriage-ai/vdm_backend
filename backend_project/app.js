@@ -36,7 +36,7 @@ const subscriptionRoutes = require('./routes/subscriptionRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const roleRoutes = require('./routes/roleRoutes');
 const moduleRoutes = require('./routes/moduleRoutes');
-const otpRoutes = require('./routes/otpRoutes');
+const otpRoutes = require('./routes/verificationRoutes');
 const chatRoutes = require('./routes/chatRoutes');
 const notificationRoutes = require('./routes/notificationRoutes');
 
